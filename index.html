@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joel Mendez - Embedded Engineer Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3f396d;
+            --secondary-color: #4a90e2;
+        }
+        .bg-primary-custom {
+            background-color: var(--primary-color);
+        }
+        .text-primary-custom {
+            color: var(--primary-color);
+        }
+        .project-card {
+            transition: transform 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        .badge {
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-2 text-primary-custom" href="#">Joel Mendez</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h1 class="display-4 fw-bold text-primary-custom">Hello, I'm Joel Mendez</h1>
+                    <h2 class="h3 mb-4">Embedded Engineer & Software Developer</h2>
+                    <p class="lead mb-4">Recent Computer Engineering graduate with a passion for embedded systems and software development. Experienced in developing efficient solutions using C, Python, and various microcontroller platforms.</p>
+                    <div class="d-flex gap-3">
+                        <a href="mailto:joelmendezce@gmail.com" class="btn btn-primary">Contact Me</a>
+                        <a href="https://linkedin.com/in/joelmendez0" target="_blank" class="btn btn-outline-primary">LinkedIn</a>
+                        <a href="Joel Mendez Resume.pdf" class="btn btn-outline-primary" download>Download Resume</a>
+                    </div>
+                    
+                </div>
+                <div class="col-md-6 text-center">
+                    <img src="1696920989076.jpg" alt="Profile" class="img-fluid rounded-circle" style="max-width: 400px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Experience Section -->
+<section id="experience" class="py-5">
+    <div class="container">
+        <h2 class="text-center text-primary-custom mb-5">Work Experience</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3 class="card-title">Software Engineer Intern</h3>
+                        <h4 class="h6 text-muted">PepsiCo | Valhalla, NY | May 2023 - Aug 2023</h4>
+                        <ul class="mt-3">
+                            <li>Developed a computer vision-based ML model for PPE detection with 95% accuracy</li>
+                            <li>Integrated facial recognition system achieving 90% accuracy</li>
+                            <li>Deployed real-time monitoring system with RTSP cameras and web application</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- New IBM Experience -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3 class="card-title">Hardware Developer – Accelerate Program</h3>
+                        <h4 class="h6 text-muted">IBM | Remote | Jun 2022 - Aug 2022</h4>
+                        <ul class="mt-3">
+                            <li>Attended technical seminars on Processor Design, Systems Engineering, Hardware & Firmware Development, Supply Chain, and System Performance</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Projects Section -->
+<section id="projects" class="py-5 bg-light">
+    <style>
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .project-image-container {
+            position: relative;
+            padding-top: 56.25%; /* 16:9 aspect ratio */
+            overflow: hidden;
+            background: #f8f9fa;
+        }
+
+        .project-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-badges {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            z-index: 2;
+        }
+
+        .project-badge {
+            background-color: rgba(63, 57, 109, 0.9);
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin: 0.2rem;
+            display: inline-block;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-features {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .project-features li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .project-features li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+
+        .carousel-container {
+            position: relative;
+            padding: 0 60px;
+        }
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            z-index: 10;
+        }
+
+        .carousel-button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .carousel-button.prev {
+            left: 0;
+        }
+
+        .carousel-button.next {
+            right: 0;
+        }
+
+        .projects-row {
+            transition: transform 0.5s ease;
+        }
+
+        .project-link {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .project-link:hover {
+            color: inherit;
+        }
+    </style>
+
+    <div class="container">
+        <h2 class="text-center text-primary-custom mb-5">Featured Projects</h2>
+        
+        <div class="carousel-container">
+            <button class="carousel-button prev" onclick="previousSlide()">←</button>
+            <button class="carousel-button next" onclick="nextSlide()">→</button>
+            
+            <div class="row g-4" id="projectsContainer">
+                <!-- Projects will be dynamically loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const projects = [
+            {
+                title: "Solar Tracker",
+                description: "Dual-axis solar tracking system with real-time image processing and remote monitoring capabilities.",
+                image: "Panel.jpg",
+                badges: ["C", "Python", "Arduino", "ESP32"],
+                features: [
+                    "Achieved 18% increase in energy efficiency",
+                    "Implemented web-based monitoring interface",
+                    "Real-time data tracking and visualization"
+                ],
+                github: "https://github.com/Joel-Mendez0/Optimizing-Solar-Tracker-Design-for-Commercial-Applications-SunnySideUpgrades-"
+            },
+            {
+                title: "ESP32 Bit-Banging Driver Library",
+                description: "Comprehensive communication protocol library for ESP32 microcontrollers.",
+                image: "BitBanging.jpg",
+                badges: ["C", "SPI", "I2C", "UART"],
+                features: [
+                    "Custom protocol implementations",
+                    "Configurable baud rates and data frames",
+                    "Validated using logic analyzer"
+                ],
+                github: "https://github.com/Joel-Mendez0/ESP32-Bit-Banging-Driver-Library"
+            },
+            {
+                title: "Classic Space Invaders on ESP32",
+                description: "Recreation of the classic game optimized for embedded systems.",
+                image: "IMG_3304.jpg",
+                badges: ["C", "FreeRTOS", "ESP-IDF", "SPI"],
+                features: [
+                    "Smooth 24 FPS gameplay",
+                    "Efficient task management with FreeRTOS",
+                    "Optimized SPI rendering"
+                ],
+                github: "https://github.com/Joel-Mendez0/SpaceInvadersESP32"
+            },
+            {
+                title: "OpenWeatherAPI C",
+                description: "Console-based weather application that allows users to search for the current weather in different cities, save favorite cities, and view the weather for those saved cities.",
+                image: "OpenWeather.jpg",
+                badges: ["C", "API", "curl"],
+                features: [
+                    "Allows the user to input the name of any city to fetch and display the current weather information.",
+                    "Users can manage their list of favorite cities and display weather for them."
+                ],
+                github: "https://github.com/Joel-Mendez0/OpenWeatherAPI-C"
+            },
+            {
+                title: "STM32-RTOS-Peripheral-Integration",
+                description: "Using STM32 with RTOS in C, this project is able to integrate multiple peripherals including servo motors, ultrasonic sensors, motion sensors, etc",
+                image: "STM32.jpg",
+                badges: ["C", "STM32", "RTOS"],
+                features: [
+                    "Seamless integration of multiple peripherals",
+                    "Real-time task scheduling and coordination",
+                    "Supports complex sensor operations"
+                ],
+                github: "https://github.com/Joel-Mendez0/STM32-RTOS-Peripheral-Integration"
+            },
+            {
+                title: "DS18B20 OneWireDriver ESP32",
+                description: "Custom driver for DS18B20 temperature sensors using 1-Wire protocol on ESP32.",
+                image: "DS18B20.jpg",
+                badges: ["C", "ESP32", "1-Wire"],
+                features: [
+                    "Low-level 1-Wire protocol implementation",
+                    "Efficient temperature data acquisition",
+                    "Easy integration with ESP32 projects"
+                ],
+                github: "https://github.com/Joel-Mendez0/DS18B20-OneWireDriver-ESP32"
+            },
+            {
+                title: "MLPSimulator",
+                description: "Multi-Layer Perceptron Simulator supporting multiple hidden layers and outputs.",
+                image: "MLP.jpg",
+                badges: ["Python","Machine Learning", "MATLAB"],
+                features: [
+                    "Flexible multi-layer support",
+                    "Visualizes neural network operations",
+                    "Accepts .mat file inputs"
+                ],
+                github: "https://github.com/Joel-Mendez0/MLPSimulator"
+            },
+            {
+                title: "NetworkSecurityMaliciousURL",
+                description: "Machine learning model for detecting malicious URLs using Python and Jupyter Notebook.",
+                image: "URL.jpg",
+                badges: ["Python", "Machine Learning", "Security"],
+                features: [
+                    "Detects malicious URLs using ML algorithms",
+                ],
+                github: "https://github.com/Joel-Mendez0/NetworkSecurityMaliciousURL"
+            },
+            {
+                title: "Traffic-Sign-Detection-Application",
+                description: "Web application for detecting road signs using YOLOv8 object detection model.",
+                image: "Detection.jpg",
+                badges: ["Python", "YOLOv8", "OpenCV"],
+                features: [
+                    "Utilizes YOLOv8 for accurate detection",
+                    "User-friendly web interface",
+                    "Supports real-time inference"
+                ],
+                github: "https://github.com/Joel-Mendez0/Traffic-Sign-Detection-Application"
+            },
+            {
+                title: "Real-time Image Processing ESP32",
+                description: "Improved version of the capstone project, featuring a light tracking algorithm running entirely on the ESP32 with real-time display on an LCD.",
+                image: "Light.jpg",
+                badges: ["C", "FreeRTOS", "ESP32"],
+                features: [
+                    "Full real-time processing on ESP32",
+                    "Efficient light-tracking algorithm",
+                    "Visual output displayed on an LCD"
+                ],
+                github: "https://github.com/Joel-Mendez0/Real-time-Image-Processing-ESP32"
+            },
+            {
+                title: "LM35-PIC16F877A-Digital-Thermometer",
+                description: "Digital thermometer using the LM35 temperature sensor and PIC16F877A microcontroller.",
+                image: "temp.jpg",
+                badges: ["C", "PIC16f877A"],
+                features: [
+                    "Accurate tempearute measurement using ADC module",
+                    "Written in C using MPLABx",
+                    "Interfaced with LCD display"
+                ],
+                github: "https://github.com/Joel-Mendez0/LM35-PIC16F877A-Digital-Thermometer"
+            },
+            {
+                title: "Mini-Projects-Pygame",
+                description: "Collection of Pygame projects including Snake, Tic Tac Toe, visual sorting algorithms, and Conway's Game of Life.",
+                image: "visual.jpg",
+                badges: ["Python", "Pygame"],
+                features: [
+                    "Interactive games and visualizations",
+                    "Educational algorithms in visual form",
+                ],
+                github: "https://github.com/Joel-Mendez0/Mini-Projects-Pygame"
+            }
+        ];
+
+        let currentIndex = 0;
+        const projectsPerPage = 6;
+
+        function createProjectCard(project) {
+            return `
+                <div class="col-md-4">
+                    <a href="${project.github}" target="_blank" class="project-link">
+                        <div class="project-card">
+                            <div class="project-image-container">
+                                <img src="${project.image}" alt="${project.title}" class="project-image">
+                                <div class="project-overlay"></div>
+                                <div class="project-badges">
+                                    ${project.badges.map(badge => `<span class="project-badge">${badge}</span>`).join('')}
+                                </div>
+                            </div>
+                            <div class="project-content">
+                                <h3 class="h5 mb-3">${project.title}</h3>
+                                <p class="text-muted mb-3">${project.description}</p>
+                                <ul class="project-features">
+                                    ${project.features.map(feature => `<li>${feature}</li>`).join('')}
+                                </ul>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            `;
+        }
+
+        function updateProjects() {
+            const container = document.getElementById('projectsContainer');
+            container.style.opacity = '0';
+            
+            setTimeout(() => {
+                container.innerHTML = '';
+                for (let i = 0; i < projectsPerPage; i++) {
+                    const index = (currentIndex + i) % projects.length;
+                    container.insertAdjacentHTML('beforeend', createProjectCard(projects[index]));
+                }
+                container.style.opacity = '1';
+            }, 300);
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + projectsPerPage) % projects.length;
+            updateProjects();
+        }
+
+        function previousSlide() {
+            currentIndex = (currentIndex - projectsPerPage + projects.length) % projects.length;
+            updateProjects();
+        }
+
+        // Initialize the projects display
+        document.addEventListener('DOMContentLoaded', updateProjects);
+    </script>
+</section>
+
+
+<section id="skills" class="py-5">
+    <div class="container">
+        <h2 class="text-center text-primary-custom mb-5">Technical Skills</h2>
+        
+        <!-- Programming Languages -->
+        <div class="mb-5">
+            <h3 class="h4 mb-4">Programming Languages</h3>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="me-3" style="min-width: 100px;">
+                            <strong>C/C++</strong>
+                        </div>
+                        <div class="progress flex-grow-1" style="height: 8px;">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="me-3" style="min-width: 100px;">
+                            <strong>Python</strong>
+                        </div>
+                        <div class="progress flex-grow-1" style="height: 8px;">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="me-3" style="min-width: 100px;">
+                            <strong>Java</strong>
+                        </div>
+                        <div class="progress flex-grow-1" style="height: 8px;">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 70%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="me-3" style="min-width: 100px;">
+                            <strong>HTML/CSS/JS</strong>
+                        </div>
+                        <div class="progress flex-grow-1" style="height: 8px;">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 50%"></div>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="me-3" style="min-width: 100px;">
+                            <strong>MATLAB</strong>
+                        </div>
+                        <div class="progress flex-grow-1" style="height: 8px;">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 50%"></div>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="me-3" style="min-width: 100px;">
+                            <strong>Verilog</strong>
+                        </div>
+                        <div class="progress flex-grow-1" style="height: 8px;">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 50%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Other Technical Skills -->
+        <div class="skills-container">
+            <style>
+                .skills-container {
+                    --primary-color: #3f396d;
+                    --hover-color: #4a90e2;
+                }
+                
+                .skill-category {
+                    margin-bottom: 3rem;
+                }
+                
+                .skill-hexagon {
+                    width: 150px;
+                    height: 150px;
+                    margin: 15px;
+                    position: relative;
+                    display: inline-flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                }
+
+                .skill-hexagon::before {
+                    content: '';
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    background: var(--primary-color);
+                    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+                    z-index: -1;
+                    transition: all 0.3s ease;
+                }
+
+                .skill-hexagon:hover::before {
+                    background: var(--hover-color);
+                    transform: rotate(30deg);
+                }
+
+                .skill-hexagon:hover .skill-icon {
+                    transform: scale(1.1);
+                }
+
+                .skill-icon {
+                    font-size: 2rem;
+                    color: white;
+                    margin-bottom: 0.5rem;
+                    transition: transform 0.3s ease;
+                }
+
+                .skill-name {
+                    color: white;
+                    font-weight: 500;
+                    text-align: center;
+                    max-width: 80%;
+                    font-size: 0.9rem;
+                }
+
+                .skill-details {
+                    display: none;
+                    position: absolute;
+                    top: 100%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: white;
+                    padding: 1rem;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+                    z-index: 10;
+                    width: 200px;
+                    text-align: center;
+                }
+
+                .skill-hexagon:hover .skill-details {
+                    display: block;
+                }
+
+                .skills-row {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    margin-bottom: 2rem;
+                }
+            </style>
+
+            <!-- Embedded Systems -->
+            <div class="skill-category">
+                <h3 class="h4 mb-4">Embedded Systems</h3>
+                <div class="skills-row">
+                    <div class="skill-hexagon">
+                        <i class="skill-icon">🎯</i>
+                        <span class="skill-name">ESP32</span>
+                        <div class="skill-details">
+                            Expert in ESP32 development, including WiFi/BLE integration and real-time applications
+                        </div>
+                    </div>
+                    <div class="skill-hexagon">
+                        <i class="skill-icon">💻</i>
+                        <span class="skill-name">STM32</span>
+                        <div class="skill-details">
+                            Proficient in STM32 programming, peripheral configuration, and HAL drivers
+                        </div>
+                    </div>
+                    <div class="skill-hexagon">
+                        <i class="skill-icon">⚡</i>
+                        <span class="skill-name">Arduino</span>
+                        <div class="skill-details">
+                            Experienced in rapid prototyping and IoT development with Arduino platforms
+                        </div>
+                    </div>
+                    <div class="skill-hexagon">
+                        <i class="skill-icon">🔧</i>
+                        <span class="skill-name">PIC MCU</span>
+                        <div class="skill-details">
+                            Skilled in PIC microcontroller programming and embedded systems design
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Protocols -->
+            <div class="skill-category">
+                <h3 class="h4 mb-4">Communication Protocols</h3>
+                <div class="skills-row">
+                    <div class="skill-hexagon">
+                        <i class="skill-icon">🔄</i>
+                        <span class="skill-name">I2C</span>
+                        <div class="skill-details">
+                            Implementation of I2C protocol for sensor integration and device communication
+                        </div>
+                    </div>
+                    <div class="skill-hexagon">
+                        <i class="skill-icon">📡</i>
+                        <span class="skill-name">SPI</span>
+                        <div class="skill-details">
+                            High-speed data transfer using SPI protocol for display and memory interfaces
+                        </div>
+                    </div>
+                    <div class="skill-hexagon">
+                        <i class="skill-icon">🔌</i>
+                        <span class="skill-name">UART</span>
+                        <div class="skill-details">
+                            Serial communication implementation for device debugging and data transfer
+                        </div>
+                    </div>
+                    <div class="skill-hexagon">
+                        <i class="skill-icon">🌐</i>
+                        <span class="skill-name">WiFi/Bluetooth</span>
+                        <div class="skill-details">
+                            Experience with WiFi/Bluetooth for IOT applications with ESP32
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tools & Frameworks -->
+            <div class="skill-category">
+                <h3 class="h4 mb-4">Tools & Frameworks</h3>
+                <div class="skills-row">
+                    <div class="skill-hexagon">
+                        <i class="skill-icon">🛠️</i>
+                        <span class="skill-name">Git</span>
+                        <div class="skill-details">
+                            Version control and collaborative development using Git and GitHub
+                        </div>
+                    </div>
+                    <div class="skill-hexagon">
+                        <i class="skill-icon">⚙️</i>
+                        <span class="skill-name">ESP-IDF</span>
+                        <div class="skill-details">
+                            ESP32 development using Espressif IoT Development Framework
+                        </div>
+                    </div>
+                    <div class="skill-hexagon">
+                        <i class="skill-icon">⚡</i>
+                        <span class="skill-name">FreeRTOS</span>
+                        <div class="skill-details">
+                            Real-time operating system implementation for embedded applications
+                        </div>
+                    </div>
+                    <div class="skill-hexagon">
+                        <i class="skill-icon">👁️</i>
+                        <span class="skill-name">OpenCV</span>
+                        <div class="skill-details">
+                            Computer vision and image processing using OpenCV library
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center text-primary-custom mb-5">Contact Me</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="text-center mb-4">
+                                <p class="lead">Get in touch for opportunities or collaboration</p>
+                                <p><strong>Email:</strong> joelmendezce@gmail.com</p>
+                                <p><strong>Phone:</strong> 347-369-7406</p>
+                                <p><strong>Location:</strong> Bronx, NY</p>
+                            </div>
+                            <div class="d-flex justify-content-center gap-3">
+                                <a href="https://linkedin.com/in/joelmendez0" target="_blank" class="btn btn-outline-primary">LinkedIn</a>
+                                <a href="https://github.com/Joel-Mendez0" target="_blank" class="btn btn-outline-primary">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p class="mb-0">© 2024 Joel Mendez. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
